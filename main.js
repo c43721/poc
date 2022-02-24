@@ -25,8 +25,9 @@ function drawNewLines() {
     const { cX, cY } = getCenter();
 
     ctx.beginPath();
-    ctx.moveTo(cX, cY);
-    ctx.lineTo(x, y);
+    ctx.fillRect(x, y, 10, 10);
+    // ctx.moveTo(cX, cY);
+    // ctx.lineTo(x, y);
     ctx.stroke();
   }
 }
@@ -60,10 +61,8 @@ function Update(timestamp) {
 
   const delta = start - previousTime;
 
-  NUM_ANTS = Math.floor(Math.random() * 100);
-
   if (previousTime !== timestamp) {
-    NUM_ANTS = Math.floor(Math.random() * 100) + 50;
+    NUM_ANTS = Math.floor(Math.random() * 100) + 10_000;
     drawNewLines();
   }
 
@@ -71,7 +70,7 @@ function Update(timestamp) {
 
   window.setTimeout(() => {
     window.requestAnimationFrame(Update);
-  }, 500);
+  }, 100);
 }
 
 window.requestAnimationFrame(Update);
